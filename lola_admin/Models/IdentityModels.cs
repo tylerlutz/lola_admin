@@ -20,7 +20,7 @@ namespace BeyondThemes.BeyondAdmin.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("LOLALogin", throwIfV1Schema: false)
         {
         }
 

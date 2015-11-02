@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="91c207f19e8e4df8a54244c0b577ff4b" Name="Diagram1">
+        <EntityTypeShape EntityType="LOLADBModel.Course_Registration" Width="1.5" PointX="5.25" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOLADBModel.Course" Width="1.5" PointX="3.25" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOLADBModel.Donation" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOLADBModel.Employee" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOLADBModel.Event_Registration" Width="1.5" PointX="8" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOLADBModel.Event" Width="1.5" PointX="5.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOLADBModel.Feedback" Width="1.5" PointX="8.25" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOLADBModel.Teacher" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
+        <AssociationConnector Association="LOLADBModel.fk_CourseRegistration" ManuallyRouted="false" />
+        <AssociationConnector Association="LOLADBModel.fk_CourseFeedback" ManuallyRouted="false" />
+        <AssociationConnector Association="LOLADBModel.fk_TeacherCourses" ManuallyRouted="false" />
+        <AssociationConnector Association="LOLADBModel.fk_EventIDRegistration" ManuallyRouted="false" />
+        <AssociationConnector Association="LOLADBModel.fk_TeacherFeedback" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="LOLADBModel.C__MigrationHistory" Width="1.5" PointX="12.625" PointY="0.75" />
+        <EntityTypeShape EntityType="LOLADBModel.AspNetRole" Width="1.5" PointX="1.5" PointY="0.75" />
+        <EntityTypeShape EntityType="LOLADBModel.AspNetUserClaim" Width="1.5" PointX="3" PointY="13.875" />
+        <EntityTypeShape EntityType="LOLADBModel.AspNetUserLogin" Width="1.5" PointX="3" PointY="11.25" />
+        <EntityTypeShape EntityType="LOLADBModel.AspNetUser" Width="1.5" PointX="0.75" PointY="3.125" />
+        <EntityTypeShape EntityType="LOLADBModel.sysdiagram" Width="1.5" PointX="12.625" PointY="3.75" />
+        <AssociationConnector Association="LOLADBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="LOLADBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="LOLADBModel.fk_UserCourseRegistration" />
+        <AssociationConnector Association="LOLADBModel.fk_UserDonation" />
+        <AssociationConnector Association="LOLADBModel.fk_UserEmployee" />
+        <AssociationConnector Association="LOLADBModel.fk_UserEventRegistration" />
+        <AssociationConnector Association="LOLADBModel.fk_UserFeedback" />
+        <AssociationConnector Association="LOLADBModel.fk_UserTeacher" />
+        <AssociationConnector Association="LOLADBModel.AspNetUserRoles" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

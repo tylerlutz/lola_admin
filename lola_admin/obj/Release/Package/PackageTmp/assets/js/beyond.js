@@ -331,7 +331,7 @@ function InitiateSettings() {
             if (!$(".page-sidebar").hasClass("menu-compact")) {
                 var position = (readCookie("rtl-support") || location.pathname == "/index-rtl-fa.html" || location.pathname == "/index-rtl-ar.html") ? 'right' : 'left';
                 $('.sidebar-menu').slimscroll({
-                    height: 'auto',
+                    height: $(window).height() - 90,
                     position: position,
                     size: '3px',
                     color: themeprimary
@@ -501,7 +501,7 @@ function setCookiesForFixedSettings() {
                 position: position,
                 size: '3px',
                 color: themeprimary,
-                height: 'auto',
+                height: $(window).height() - 90,
             });
         }
     } else {
@@ -518,7 +518,7 @@ $("#chat-link").click(function () {
     $('.page-chatbar').toggleClass('open');
     $("#chat-link").toggleClass('open');
 });
-$('.page-chatbar .chatbar-contacts .contact').on('click', function(e) {
+$('.page-chatbar .chatbar-contacts .contact').on('click', function (e) {
     $('.page-chatbar .chatbar-contacts').hide();
     $('.page-chatbar .chatbar-messages').show();
 });
@@ -528,17 +528,20 @@ $('.page-chatbar .chatbar-messages .back').on('click', function (e) {
     $('.page-chatbar .chatbar-messages').hide();
 });
 var position = (readCookie("rtl-support") || location.pathname == "/index-rtl-fa.html" || location.pathname == "/index-rtl-ar.html") ? 'right' : 'left';
+var additionalHeight = 0;
+if ($(window).width() < 531)
+    additionalHeight = 45;
 $('.chatbar-messages .messages-list').slimscroll({
     position: position,
     size: '4px',
     color: themeprimary,
-    height: $(window).height() - 250,
+    height: $(window).height() - (250 + additionalHeight),
 });
 $('.chatbar-contacts .contacts-list').slimscroll({
     position: position,
     size: '4px',
     color: themeprimary,
-    height: $(window).height() - 86,
+    height: $(window).height() - (86 + additionalHeight),
 });
 //End Chat
 

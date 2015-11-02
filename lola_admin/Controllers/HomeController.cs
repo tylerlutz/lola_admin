@@ -1,10 +1,41 @@
 ﻿using System;
 using System.Web.Mvc;
+using System.Collections.Generic;
+using System.Web;
+using System.Linq;
+using BeyondThemes.BeyondAdmin.Models;
 
 namespace BeyondThemes.BeyondAdmin.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
+        public ActionResult Index()
+        {
+            return View();
+
+        }
+        public ActionResult Events()
+        {
+            LOLADBEntities dbEvents = new LOLADBEntities();
+            return View(dbEvents.Events.ToList());
+        }
+       
+        public ActionResult Courses()
+        {
+            LOLADBEntities dbCourse = new LOLADBEntities();
+            return View(dbCourse.Courses.ToList());
+        }
+        
+    public ActionResult Donations()
+        { LOLADBEntities dbEvent = new LOLADBEntities();
+        return View(dbEvent.Donations.ToList());
+
+    }
+        public ActionResult AddDonation()
+    { LOLADBEntities dbAdd_Donation = new LOLADBEntities();
+    return View(dbAdd_Donation.Donations.ToList());
+    }
         public ActionResult Blank()
         {
             return View();
@@ -45,10 +76,7 @@ namespace BeyondThemes.BeyondAdmin.Controllers
         {
             return View();
         }
-        public ActionResult Index()
-        {
-            return View();
-        }
+        
         public ActionResult FontAwesome()
         {
             return View();
@@ -180,5 +208,7 @@ namespace BeyondThemes.BeyondAdmin.Controllers
         {
             return View();
         }
+    
+
     }
 }

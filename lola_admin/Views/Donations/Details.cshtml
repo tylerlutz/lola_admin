@@ -1,0 +1,42 @@
+﻿@model BeyondThemes.BeyondAdmin.Models.Donation
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Donation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Donation_Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Donation_Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Donation_Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Donation_Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AspNetUser.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser.FirstName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Donation_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

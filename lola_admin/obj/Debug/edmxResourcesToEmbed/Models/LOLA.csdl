@@ -1,0 +1,439 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LOLADBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Course_Registration">
+    <Key>
+      <PropertyRef Name="Registration_ID" />
+    </Key>
+    <Property Name="Registration_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Transaction_ID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Course_ID" Type="Int32" />
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="P_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="P_Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="P_UnderAge" Type="Boolean" />
+    <NavigationProperty Name="Cours" Relationship="Self.fk_CourseRegistration" FromRole="Course_Registration" ToRole="Courses" />
+    <NavigationProperty Name="AspNetUser" Relationship="LOLADBModel.fk_UserCourseRegistration" FromRole="Course_Registration" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="Course">
+    <Key>
+      <PropertyRef Name="Course_ID" />
+    </Key>
+    <Property Name="Course_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Course_Type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Course_Desc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Teacher_ID" Type="Int32" />
+    <Property Name="Course_Max_Size" Type="Int32" />
+    <Property Name="Course_Start_Date" Type="DateTime" Precision="0" />
+    <Property Name="Course_End_Date" Type="DateTime" Precision="0" />
+    <Property Name="Course_Time_Start" Type="Time" Precision="7" />
+    <Property Name="Course_Time_End" Type="Time" Precision="7" />
+    <Property Name="Course_Cost" Type="Single" />
+    <Property Name="Course_Location" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Course_Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Course_Registration" Relationship="Self.fk_CourseRegistration" FromRole="Courses" ToRole="Course_Registration" />
+    <NavigationProperty Name="Feedbacks" Relationship="Self.fk_CourseFeedback" FromRole="Courses" ToRole="Feedback" />
+    <NavigationProperty Name="Teacher" Relationship="Self.fk_TeacherCourses" FromRole="Courses" ToRole="Teacher" />
+  </EntityType>
+  <EntityType Name="Donation">
+    <Key>
+      <PropertyRef Name="Donation_ID" />
+    </Key>
+    <Property Name="Donation_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Transaction_ID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Donation_Type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Donation_Amount" Type="Single" />
+    <Property Name="Donation_Category" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="AspNetUser" Relationship="LOLADBModel.fk_UserDonation" FromRole="Donation" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="Employee_ID" />
+    </Key>
+    <Property Name="Employee_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="SSN" Type="Int32" />
+    <Property Name="Job_Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="AspNetUser" Relationship="LOLADBModel.fk_UserEmployee" FromRole="Employee" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="Event_Registration">
+    <Key>
+      <PropertyRef Name="Event_Registration_ID" />
+    </Key>
+    <Property Name="Event_Registration_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Event_ID" Type="Int32" />
+    <Property Name="Event_Date" Type="DateTime" Precision="0" />
+    <Property Name="Transaction_ID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="P_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="P_Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="P_UnderAge" Type="Boolean" />
+    <NavigationProperty Name="Event" Relationship="Self.fk_EventIDRegistration" FromRole="Event_Registration" ToRole="Events" />
+    <NavigationProperty Name="AspNetUser" Relationship="LOLADBModel.fk_UserEventRegistration" FromRole="Event_Registration" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="Event">
+    <Key>
+      <PropertyRef Name="Event_ID" />
+    </Key>
+    <Property Name="Event_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Event_Type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Event_Desc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Event_Start_Date" Type="DateTime" Precision="0" />
+    <Property Name="Event_End_Date" Type="DateTime" Precision="0" />
+    <Property Name="Event_Time_Start" Type="Time" Precision="7" />
+    <Property Name="Event_Time_End" Type="Time" Precision="7" />
+    <Property Name="Tickets_Sold" Type="Int32" />
+    <Property Name="Max_Tickets" Type="Int32" />
+    <Property Name="Event_Cost" Type="Single" />
+    <Property Name="Event_Location" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Event_Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Event_Registration" Relationship="Self.fk_EventIDRegistration" FromRole="Events" ToRole="Event_Registration" />
+  </EntityType>
+  <EntityType Name="Feedback">
+    <Key>
+      <PropertyRef Name="Feedback_ID" />
+    </Key>
+    <Property Name="Feedback_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Course_ID" Type="Int32" />
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Teacher_ID" Type="Int32" />
+    <Property Name="Course_Marketing" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Course_Registration_Type" Type="Boolean" />
+    <Property Name="Course_Rating" Type="Int32" />
+    <Property Name="Student_Comment" Type="Int32" />
+    <NavigationProperty Name="Cours" Relationship="Self.fk_CourseFeedback" FromRole="Feedback" ToRole="Courses" />
+    <NavigationProperty Name="Teacher" Relationship="Self.fk_TeacherFeedback" FromRole="Feedback" ToRole="Teacher" />
+    <NavigationProperty Name="AspNetUser" Relationship="LOLADBModel.fk_UserFeedback" FromRole="Feedback" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="Teacher">
+    <Key>
+      <PropertyRef Name="Teacher_ID" />
+    </Key>
+    <Property Name="Teacher_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="SSN" Type="Int32" />
+    <NavigationProperty Name="Courses" Relationship="Self.fk_TeacherCourses" FromRole="Teacher" ToRole="Courses" />
+    <NavigationProperty Name="Feedbacks" Relationship="Self.fk_TeacherFeedback" FromRole="Teacher" ToRole="Feedback" />
+    <NavigationProperty Name="AspNetUser" Relationship="LOLADBModel.fk_UserTeacher" FromRole="Teacher" ToRole="AspNetUser" />
+  </EntityType>
+  <Association Name="fk_CourseRegistration">
+    <End Role="Courses" Type="LOLADBModel.Course" Multiplicity="0..1" />
+    <End Role="Course_Registration" Type="Self.Course_Registration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Courses">
+        <PropertyRef Name="Course_ID" />
+      </Principal>
+      <Dependent Role="Course_Registration">
+        <PropertyRef Name="Course_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CourseFeedback">
+    <End Role="Courses" Type="LOLADBModel.Course" Multiplicity="0..1" />
+    <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Courses">
+        <PropertyRef Name="Course_ID" />
+      </Principal>
+      <Dependent Role="Feedback">
+        <PropertyRef Name="Course_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_TeacherCourses">
+    <End Role="Teacher" Type="Self.Teacher" Multiplicity="0..1" />
+    <End Role="Courses" Type="LOLADBModel.Course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teacher">
+        <PropertyRef Name="Teacher_ID" />
+      </Principal>
+      <Dependent Role="Courses">
+        <PropertyRef Name="Teacher_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_EventIDRegistration">
+    <End Role="Events" Type="Self.Event" Multiplicity="0..1" />
+    <End Role="Event_Registration" Type="Self.Event_Registration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Events">
+        <PropertyRef Name="Event_ID" />
+      </Principal>
+      <Dependent Role="Event_Registration">
+        <PropertyRef Name="Event_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_TeacherFeedback">
+    <End Role="Teacher" Type="Self.Teacher" Multiplicity="0..1" />
+    <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teacher">
+        <PropertyRef Name="Teacher_ID" />
+      </Principal>
+      <Dependent Role="Feedback">
+        <PropertyRef Name="Teacher_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LOLADBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Course_Registration" EntityType="Self.Course_Registration" />
+    <EntitySet Name="Courses" EntityType="LOLADBModel.Course" />
+    <EntitySet Name="Donations" EntityType="Self.Donation" />
+    <EntitySet Name="Employees" EntityType="Self.Employee" />
+    <EntitySet Name="Event_Registration" EntityType="Self.Event_Registration" />
+    <EntitySet Name="Events" EntityType="Self.Event" />
+    <EntitySet Name="Feedbacks" EntityType="Self.Feedback" />
+    <EntitySet Name="Teachers" EntityType="Self.Teacher" />
+    <AssociationSet Name="fk_CourseRegistration" Association="Self.fk_CourseRegistration">
+      <End Role="Courses" EntitySet="Courses" />
+      <End Role="Course_Registration" EntitySet="Course_Registration" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CourseFeedback" Association="Self.fk_CourseFeedback">
+      <End Role="Courses" EntitySet="Courses" />
+      <End Role="Feedback" EntitySet="Feedbacks" />
+    </AssociationSet>
+    <AssociationSet Name="fk_TeacherCourses" Association="Self.fk_TeacherCourses">
+      <End Role="Teacher" EntitySet="Teachers" />
+      <End Role="Courses" EntitySet="Courses" />
+    </AssociationSet>
+    <AssociationSet Name="fk_EventIDRegistration" Association="Self.fk_EventIDRegistration">
+      <End Role="Events" EntitySet="Events" />
+      <End Role="Event_Registration" EntitySet="Event_Registration" />
+    </AssociationSet>
+    <AssociationSet Name="fk_TeacherFeedback" Association="Self.fk_TeacherFeedback">
+      <End Role="Teacher" EntitySet="Teachers" />
+      <End Role="Feedback" EntitySet="Feedbacks" />
+    </AssociationSet>
+    <EntitySet Name="C__MigrationHistory" EntityType="LOLADBModel.C__MigrationHistory" />
+    <EntitySet Name="AspNetRoles" EntityType="LOLADBModel.AspNetRole" />
+    <EntitySet Name="AspNetUserClaims" EntityType="LOLADBModel.AspNetUserClaim" />
+    <EntitySet Name="AspNetUserLogins" EntityType="LOLADBModel.AspNetUserLogin" />
+    <EntitySet Name="AspNetUsers" EntityType="LOLADBModel.AspNetUser" />
+    <EntitySet Name="sysdiagrams" EntityType="LOLADBModel.sysdiagram" />
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="LOLADBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="LOLADBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="fk_UserCourseRegistration" Association="LOLADBModel.fk_UserCourseRegistration">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="Course_Registration" EntitySet="Course_Registration" />
+    </AssociationSet>
+    <AssociationSet Name="fk_UserDonation" Association="LOLADBModel.fk_UserDonation">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="Donation" EntitySet="Donations" />
+    </AssociationSet>
+    <AssociationSet Name="fk_UserEmployee" Association="LOLADBModel.fk_UserEmployee">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="fk_UserEventRegistration" Association="LOLADBModel.fk_UserEventRegistration">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="Event_Registration" EntitySet="Event_Registration" />
+    </AssociationSet>
+    <AssociationSet Name="fk_UserFeedback" Association="LOLADBModel.fk_UserFeedback">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="Feedback" EntitySet="Feedbacks" />
+    </AssociationSet>
+    <AssociationSet Name="fk_UserTeacher" Association="LOLADBModel.fk_UserTeacher">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="Teacher" EntitySet="Teachers" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="LOLADBModel.AspNetUserRoles">
+      <End Role="AspNetRole" EntitySet="AspNetRoles" />
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="AspNetRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="LOLADBModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="LOLADBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogin">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="LOLADBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Zip" Type="Int32" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="StripeID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="LOLADBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="LOLADBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+    <NavigationProperty Name="Course_Registration" Relationship="LOLADBModel.fk_UserCourseRegistration" FromRole="AspNetUser" ToRole="Course_Registration" />
+    <NavigationProperty Name="Donations" Relationship="LOLADBModel.fk_UserDonation" FromRole="AspNetUser" ToRole="Donation" />
+    <NavigationProperty Name="Employees" Relationship="LOLADBModel.fk_UserEmployee" FromRole="AspNetUser" ToRole="Employee" />
+    <NavigationProperty Name="Event_Registration" Relationship="LOLADBModel.fk_UserEventRegistration" FromRole="AspNetUser" ToRole="Event_Registration" />
+    <NavigationProperty Name="Feedbacks" Relationship="LOLADBModel.fk_UserFeedback" FromRole="AspNetUser" ToRole="Feedback" />
+    <NavigationProperty Name="Teachers" Relationship="LOLADBModel.fk_UserTeacher" FromRole="AspNetUser" ToRole="Teacher" />
+    <NavigationProperty Name="AspNetRoles" Relationship="LOLADBModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Type="LOLADBModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="LOLADBModel.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaim">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Type="LOLADBModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="LOLADBModel.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogin">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_UserCourseRegistration">
+    <End Type="LOLADBModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+    <End Type="LOLADBModel.Course_Registration" Role="Course_Registration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Course_Registration">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_UserDonation">
+    <End Type="LOLADBModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+    <End Type="LOLADBModel.Donation" Role="Donation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Donation">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_UserEmployee">
+    <End Type="LOLADBModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+    <End Type="LOLADBModel.Employee" Role="Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_UserEventRegistration">
+    <End Type="LOLADBModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+    <End Type="LOLADBModel.Event_Registration" Role="Event_Registration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Event_Registration">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_UserFeedback">
+    <End Type="LOLADBModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+    <End Type="LOLADBModel.Feedback" Role="Feedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Feedback">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_UserTeacher">
+    <End Type="LOLADBModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+    <End Type="LOLADBModel.Teacher" Role="Teacher" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Teacher">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Type="LOLADBModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+    <End Type="LOLADBModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+  </Association>
+</Schema>
